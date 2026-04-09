@@ -1,29 +1,4 @@
-// import express from "express";
-// import Address from "../models/Address.models.js";
 
-// const router = express.Router();
-
-// // Get addresses
-// router.get("/api/address/:userId", async (req, res) => {
-//   const addresses = await Address.find({ userId: req.params.userId });
-//   res.json(addresses);
-// });
-
-// // Add address
-// router.post("/api/address/add", async (req, res) => {
-//   const address = new Address(req.body);
-//   await address.save();
-
-//   res.json(address);
-// });
-
-// // Delete address
-// router.delete("/api/address/delete/:id", async (req, res) => {
-//   await Address.findByIdAndDelete(req.params.id);
-//   res.json({ message: "Address deleted" });
-// });
-
-// export default router;
 import express from "express";
 import Address from "../models/Address.models.js";
 
