@@ -19,7 +19,7 @@ router.post("/address", async (req, res) =>  {
 
 
 // 📥 Get All Addresses (by user)
-router.get("/:userId", async (req, res) => {
+router.get("/address/:userId", async (req, res) => {
   try {
     const addresses = await Address.find({ userId: req.params.userId });
     res.json(addresses);
