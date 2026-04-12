@@ -30,7 +30,7 @@ router.get("/address/:userId", async (req, res) => {
 
 
 // ❌ Delete Address
-router.delete("/:id", async (req, res) => {
+router.delete("/address/delete/:id", async (req, res) => {
   try {
     await Address.findByIdAndDelete(req.params.id);
     res.json({ message: "Address deleted" });
@@ -41,7 +41,7 @@ router.delete("/:id", async (req, res) => {
 
 
 // ✏️ Update Address
-router.put("/address/:id", async (req, res) => {
+router.put("/address/update/:id", async (req, res) => {
   debugger;
   try {
     const updated = await Address.findByIdAndUpdate(
