@@ -19,7 +19,7 @@ app.use(express.json());
 initializeDatabase();
 
 // ✅ Routes
-app.use("/auth",authRoutes);
+app.use("/api/auth",authRoutes);
 app.use(productRoutes);
 app.use(categoryRoutes);
 app.use("/api",cartRoutes);
