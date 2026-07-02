@@ -1,6 +1,6 @@
-const User = require("../models/User.models.js");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+import User from "../models/User.models.js";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
