@@ -7,6 +7,7 @@ import cartRoutes from "./routes/cartRoutes.js";
 import wishlistRoutes from "./routes/wishlistRoutes.js";
 import addressRoutes from "./routes/addressRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 import cors from "cors";
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.json());
 initializeDatabase();
 
 // ✅ Routes
+app.use("/auth",authRoutes);
 app.use(productRoutes);
 app.use(categoryRoutes);
 app.use("/api",cartRoutes);
