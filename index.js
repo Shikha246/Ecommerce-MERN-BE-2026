@@ -8,6 +8,7 @@ import wishlistRoutes from "./routes/wishlistRoutes.js";
 import addressRoutes from "./routes/addressRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
+
 import cors from "cors";
 const app = express();
 
