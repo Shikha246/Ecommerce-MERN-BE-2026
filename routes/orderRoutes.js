@@ -16,7 +16,12 @@ router.post("/orders/place", async (req, res) => {
     });
 
     await newOrder.save();
-
+for (const item of items) {
+      await Product.findByIdAndUpdate(
+        item.productId, 
+        { $inc: { sales_count: item.qty } } // Notice we use item.qty here because that matches your schema!
+      );
+    }
     res.json(newOrder);
 
   } catch (err) {

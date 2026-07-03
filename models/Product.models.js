@@ -9,7 +9,8 @@ const productSchema = new mongoose.Schema({
   category: String,
   author: String,
   publisher: String,
-  stock: Number
+  stock: Number,
+  sales_count: { type: Number, default: 0 }
 });
 
 export default mongoose.model("Product", productSchema);
