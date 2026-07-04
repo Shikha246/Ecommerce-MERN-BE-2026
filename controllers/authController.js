@@ -1,7 +1,7 @@
 import User from "../models/User.models.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-
+import { protect } from "../middleware/authMiddleware.js";// This is our security guard middleware
 const JWT_SECRET = process.env.JWT_SECRET;
 
 
@@ -114,3 +114,15 @@ export const login = async (req, res) => {
   }
 };
 
+export const getUserProfile = async (req, res) => {
+  try {
+    // req.user will be populated by our middleware security guard
+    if (req.user) {
+      res.json(req.user);
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Server error fetching profile" });
+  }
+};
