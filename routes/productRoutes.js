@@ -1,6 +1,6 @@
 import express from "express";
 import Product from "../models/Product.models.js";
-import {Link} from "react-router-dom";
+
 const router = express.Router();
 
 // Get all products

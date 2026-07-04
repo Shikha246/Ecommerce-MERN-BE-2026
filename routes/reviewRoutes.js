@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 
-// 1. SUBMIT A NEW REVIEW
+// 1. SUBMIT A NEW REVIEW in the database
 router.post('/reviews', async (req, res) => {
   try {
     const { productId, username, rating, comment } = req.body;
