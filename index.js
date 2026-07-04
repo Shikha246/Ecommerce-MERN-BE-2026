@@ -22,7 +22,7 @@ initializeDatabase();
 // ✅ Routes
 app.use("/api/auth",authRoutes);
 app.use(productRoutes);
-app.use(reviewRoutes);
+app.use("/api",reviewRoutes);
 app.use(categoryRoutes);
 app.use("/api",cartRoutes);
 app.use("/api",wishlistRoutes);
