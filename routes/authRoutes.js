@@ -1,7 +1,7 @@
 
 import { Router } from "express";
 import { signup, login,getUserProfile } from "../controllers/authController.js";
-
+import { protect } from "../middleware/authMiddleware.js";
 const router = Router();
 
 router.post("/signup", signup);
