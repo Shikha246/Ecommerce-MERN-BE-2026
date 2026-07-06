@@ -10,6 +10,9 @@ const cartItemSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  author: {
+    type: String
+  },
   price: {
     type: Number,
     required: true

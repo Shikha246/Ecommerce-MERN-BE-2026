@@ -88,6 +88,7 @@ router.post("/cart/add", async (req, res) => {
           {
             productId: product._id.toString(),
             name: product.name,
+            author:product.author,
             price: product.price,
             image: product.image,
             qty: 1
@@ -105,6 +106,7 @@ router.post("/cart/add", async (req, res) => {
         cart.items.push({
           productId: product._id.toString(),
           name: product.name,
+          author:product.author,
           price: product.price,
           image: product.image,
           qty: 1
