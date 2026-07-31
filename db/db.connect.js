@@ -7,7 +7,7 @@ const mongoUri = process.env.MONGODB;
 
 export const initializeDatabase = async () => {
   try {
-    console.log(process.env.MONGODB)
+    // console.log(process.env.MONGODB)
     await mongoose.connect(mongoUri);
     console.log("Connected to Database");
   } catch (error) {
