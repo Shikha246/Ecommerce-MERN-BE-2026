@@ -1,6 +1,6 @@
 import express from "express";
 import { initializeDatabase } from "./db/db.connect.js";
-import chatRoutes from "./routes/chatRoutes.js";
+
 import productRoutes from "./routes/productRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import cartRoutes from "./routes/cartRoutes.js";
@@ -9,26 +9,36 @@ import addressRoutes from "./routes/addressRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import reviewRoutes from "./routes/reviewRoutes.js";
+import chatRoutes from "./routes/chatRoutes.js";
 import cors from "cors";
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-
-// ✅ Connect DB here
-initializeDatabase();
+// Ensure the DB connection is ready before any route runs.
+// initializeDatabase() is now idempotent (checks isConnected), so this
+// is cheap on every request after the first.
+app.use(async (req, res, next) => {
+  try {
+    await initializeDatabase();
+    next();
+  } catch (err) {
+    res.status(500).json({ error: "Database connection failed" });
+  }
+});
 
 // ✅ Routes
-app.use("/api/auth",authRoutes);
+app.use("/api/auth", authRoutes);
 app.use(productRoutes);
-app.use("/api",reviewRoutes);
+app.use("/api", reviewRoutes);
 app.use(categoryRoutes);
-app.use("/api",cartRoutes);
-app.use("/api",wishlistRoutes);
+app.use("/api", cartRoutes);
+app.use("/api", wishlistRoutes);
 app.use("/api", addressRoutes);
-app.use("/api",orderRoutes);
+app.use("/api", orderRoutes);
 app.use("/api", chatRoutes);
+
 app.listen(5000, () => {
   console.log("🚀 Server running on port 5000");
 });
