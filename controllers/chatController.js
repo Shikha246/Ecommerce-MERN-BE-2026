@@ -131,14 +131,18 @@ export const handleChatMessage = async (req, res) => {
       safetyCounter++;
 
       let result;
-      if (functionCall.name === "search_products") {
-        result = await searchProducts(functionCall.args);
-      } else if (functionCall.name === "get_order_status") {
-        result = await getOrderStatus(functionCall.args, req.user);
-      } else {
-        result = { error: "Unknown tool" };
+      try {
+        if (functionCall.name === "search_products") {
+          result = await searchProducts(functionCall.args);
+        } else if (functionCall.name === "get_order_status") {
+          result = await getOrderStatus(functionCall.args, req.user);
+        } else {
+          result = { error: "Unknown tool" };
+        }
+      } catch (toolErr) {
+        console.error("Tool execution error:", toolErr);
+        result = { error: "tool_failed" };
       }
-
       contents.push(response.candidates[0].content); // preserves thoughtSignature
       contents.push({
         role: "user",
